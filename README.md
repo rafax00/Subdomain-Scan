@@ -9,3 +9,9 @@ Python tool for lookup subdomains using a wordlist Bruteforce
 ## How To Use
 
 ```python dns_scan.py <domain> <wordlist>```
+
+## Wordlist
+
+./wordlist/subdomains.txt
+
+Contains the most 1000 used subdomains listed
