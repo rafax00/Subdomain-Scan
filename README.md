@@ -3,7 +3,7 @@ DNS-Scan is a simple python tool designed to find subdomains using bruteforce.
 
 ## Dependencies
 
-* <b>host</b>:
+* <b>Host</b>:
     ```sudo apt install host```
     
 * <b>Python</b>
@@ -17,7 +17,11 @@ DNS-Scan is a simple python tool designed to find subdomains using bruteforce.
 
 ```./dns_scan <domain> <wordlist>```
 
+<b>Example: </b> ```./dns_scan google.com subdomains.txt ```
+The command above will scan *.google.com hosted domains.
 
+![alt text](https://i.ibb.co/yN7krfs/running-dns-scan.png)
 
 ## Recommended Wordlist
 
+The following repository contains a lot of useful wordlists for subdomain enumeration: https://github.com/rbsec/dnscan
