@@ -1,17 +1,23 @@
-# DNS-Scan
-Python tool for lookup subdomains using a wordlist Bruteforce
+# DNS-Scan Description
+DNS-Scan is a simple python tool designed to find subdomains using bruteforce.
 
 ## Dependencies
 
 * <b>host</b>:
     ```sudo apt install host```
+    
+* <b>Python</b>
+    ```sudo apt install python```
+
+## Setup
+
+```chmod +x dns_scan```
 
 ## How To Use
 
-```python dns_scan.py <domain> <wordlist>```
+```./dns_scan <domain> <wordlist>```
 
-## Wordlist
 
-./wordlist/subdomains.txt
 
-Contains the most 1000 used subdomains listed
+## Recommended Wordlist
+
