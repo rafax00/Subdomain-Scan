@@ -1,13 +1,35 @@
-# Subdomain-Scan Description
-Subdomain-Scan is a simple python tool designed to find subdomains using bruteforce.
+# Subdomain-Scan 
+
+## Description
+
+Subdomain-Scan is a simple python tool designed to find subdomains using bruteforce techniques.
+This recon tool can help you to spot hidden subdomains from your target.
+
+## Useful Features:
+
+<b>Multi-Threading:</b> [<i>up to <b>222</b> threads</i>] This feature makes Subdomain-Scan faster than the majority of subdomain enumeration tools available.
+
+<b>Recursive Mode:</b> With this, you can go further in your target, finding more elaborate subdomain names.
 
 ## Dependencies
 
+* <b>Python3</b>
+
+    ```sudo apt-get install python3.6```
+
 * <b>Host</b>:
-    ```sudo apt install host```
+
+    ```sudo apt-get install host```
     
-* <b>Python</b>
-    ```sudo apt install python```
+* <b>Used Python Libs</b>
+    ```
+    subprocess
+    argparse 
+    threading
+    queue
+    time
+    sys
+    ```
 
 ## Setup
 
@@ -19,14 +41,28 @@ Subdomain-Scan is a simple python tool designed to find subdomains using brutefo
 
 ## How To Use
 
-```./dns_scan -h```
+<b>Basic Usage</b>
 
 ```./dns_scan <domain> <wordlist>```
 
-<b>Example: </b> ```./dns_scan google.com subdomains.txt ```
-This command will scan all *.google.com hosted domains in the passed wordlist.
+<b>Help: </b>
 
-![alt text](https://i.ibb.co/yN7krfs/running-dns-scan.png)
+```./dns_scan -h```
+
+<b>Using Threads: </b>
+
+```./dns_scan <domain> <wordlist> [-t 222]```
+
+The maximum number of threads is 222 [1 - 222].
+
+<b>Recursive Mode: </b>
+
+```./dns_scan <domain> <wordlist> [-r]```
+
+<b>Example: </b> ```./dns_scan google.com subdomains.txt -t 55 -r```
+This command will scan all *.google.com subdomains in the passed wordlist.
+
+![alt text](https://i.ibb.co/dMcR8vp/dns.png)
 
 ## Recommended Wordlists
 
