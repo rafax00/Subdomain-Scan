@@ -28,6 +28,6 @@ This command will scan all *.google.com hosted domains in the passed wordlist.
 
 ![alt text](https://i.ibb.co/yN7krfs/running-dns-scan.png)
 
-## Recommended Wordlist
+## Recommended Wordlists
 
 The following repository contains a lot of useful wordlists for subdomain enumeration: https://github.com/rbsec/dnscan
