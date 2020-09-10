@@ -13,7 +13,7 @@ DNS-Scan is a simple python tool designed to find subdomains using bruteforce.
 
 ```git clone https://github.com/RafaelSantos025/DNS-Scan.git```
 
-```cd DNS-Scan```
+```cd DNS-Scan/```
 
 ```chmod +x dns_scan```
 
