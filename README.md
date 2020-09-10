@@ -1,5 +1,5 @@
-# DNS-Scan Description
-DNS-Scan is a simple python tool designed to find subdomains using bruteforce.
+# Subdomain-Scan Description
+Subdomain-Scan is a simple python tool designed to find subdomains using bruteforce.
 
 ## Dependencies
 
@@ -13,7 +13,7 @@ DNS-Scan is a simple python tool designed to find subdomains using bruteforce.
 
 ```git clone https://github.com/RafaelSantos025/DNS-Scan.git```
 
-```cd DNS-Scan/```
+```cd Subdomain-Scan/```
 
 ```chmod +x dns_scan```
 
