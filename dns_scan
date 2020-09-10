@@ -1,7 +1,11 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+#Rafael Santos
+
 import subprocess
 import argparse
 
-parser = argparse.ArgumentParser(description="Subdomain Scan, DSN Scan, Subdomain Enumerator.")
+parser = argparse.ArgumentParser(description="Subdomain Recon. Usage: ./dns_scan example.com subdomain_wordlist.txt\n[*.example.com will be scanned]")
 parser.add_argument("domain", help="Domain To Scan")
 parser.add_argument("wordlist", help="Subdomain Wordlist")
 args = parser.parse_args()
@@ -21,24 +25,23 @@ def exec_comand(comand):
         exit(0)
 
 def bruteforce(subdomains, domain):
-    print("*Scanning " + domain)
+    print("[*] Scanning *." + domain + "\n")
 
     for subdomain in subdomains:
         try:
             comand = "host " + str(subdomain) + "." + domain
-            out = exec_comand(comand)
+            out = str(exec_comand(comand)).replace("b'", "").replace("\\n'", "").replace("\\n", " ").replace("\n", " ") #.replace("\r", "").replace("\n", " ")
 
-            if "not found:" in out:
+            if ("not found:" in out) or (out == "") or (len(out) < 4):
                 continue
 
             print(out)
 
         except KeyboardInterrupt:
-            print(" Interrupt")
             exit(0)
 
         except Exception as error:
-            print(error)
+            print(subdomain + " " + str(error).replace("b'", "").replace("\\n'", "").replace("\r", "").replace("\n", " "))
 
 
 def readFileAndGenerateWordlist(name):
@@ -60,7 +63,7 @@ def readFileAndGenerateWordlist(name):
         if len(subdomains) > 0:
            return subdomains
         else:
-            print("Wordlist has no data.")
+            print("Empty Wordlist.")
             exit(0)
 
     except Exception as error:
