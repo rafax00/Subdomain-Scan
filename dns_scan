@@ -9,11 +9,11 @@ import queue
 import time
 import sys
 
-parser = argparse.ArgumentParser(description="Subdomain Recon. Usage: ./dns_scan example.com subdomain_wordlist.txt\n[*.example.com will be scanned]")
+parser = argparse.ArgumentParser(description="Subdomain Scan. Usage: ./dns_scan example.com subdomain_wordlist.txt\n[*.example.com will be scanned]")
 parser.add_argument("domain", help="Domain To Scan")
 parser.add_argument("wordlist", help="Subdomain Wordlist")
 parser.add_argument("-t", dest="threads", default=1, help="Threads [1 - 222]")
-parser.add_argument("-r", dest="recursive", action="store_true", help="Recursive subdomains")
+parser.add_argument("-r", dest="recursive", action="store_true", help="Recursive mode")
 args = parser.parse_args()
 
 domain = args.domain
@@ -139,7 +139,7 @@ def startThreads():
         ScanUtils.stopThreads = True
         ScanUtils.messages.put("exit")
         exit(0)
-        
+
 def progressBar():
     sys.stdout.flush()
     sys.stdout.write("[")
