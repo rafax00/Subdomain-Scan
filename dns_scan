@@ -120,21 +120,26 @@ def printResult():
 def startThreads():
     for thread in ScanUtils.threads:
         thread.start()
+    try:
+        while True:
+            threadCount = threading.active_count()
 
-    while True:
-        threadCount = threading.active_count()
+            if threadCount < 3:
+                ScanUtils.stopThreads = True
+                ScanUtils.messages.put("exit")
+                if recursive and (len(ScanUtils.recursiveWordlist) > 0):
+                    startRecursiveLoop()
+                    return
 
-        if threadCount < 3:
-            ScanUtils.stopThreads = True
-            ScanUtils.messages.put("exit")
-            if recursive and (len(ScanUtils.recursiveWordlist) > 0):
-                startRecursiveLoop()
-                return
+                exit(0)
 
-            exit(0)
-
-        time.sleep(1.111)
-
+            time.sleep(1.111)
+    except KeyboardInterrupt:
+        print("[*] Stopping Threads ...")
+        ScanUtils.stopThreads = True
+        ScanUtils.messages.put("exit")
+        exit(0)
+        
 def progressBar():
     sys.stdout.flush()
     sys.stdout.write("[")
@@ -186,19 +191,25 @@ def createThreads():
         exit(0)
 
 def startRecursiveLoop():
-    ScanUtils.subdomainWordlist = ScanUtils.recursiveWordlist
-    ScanUtils.recursiveWordlist = []
-    ScanUtils.stopThreads = False
-    ScanUtils.threads = []
+    try:
+        ScanUtils.subdomainWordlist = ScanUtils.recursiveWordlist
+        ScanUtils.recursiveWordlist = []
+        ScanUtils.stopThreads = False
+        ScanUtils.threads = []
 
-    while True:
-        threadCount = threading.active_count()
-        if threadCount == 1:
-            break
-        time.sleep(0.4)
-
-    createThreads()
-    startThreads()
+        try:
+            while True:
+                threadCount = threading.active_count()
+                if threadCount == 1:
+                    break
+                time.sleep(0.4)
+        except KeyboardInterrupt:
+            exit(0)
+        createThreads()
+        startThreads()
+    except Exception as error:
+        print("startRecursiveLoop " + str(error))
+        exit(0)
 
 def main():
     try:
