@@ -33,7 +33,7 @@ This recon tool can help you to spot hidden subdomains from your target.
 
 ## Setup
 
-```git clone https://github.com/RafaelSantos025/DNS-Scan.git```
+```git clone https://github.com/RafaelSantos025/Subdomain-Scan.git```
 
 ```cd Subdomain-Scan/```
 
