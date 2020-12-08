@@ -66,4 +66,5 @@ This command will scan all *.google.com subdomains in the passed wordlist.
 
 ## Recommended Wordlists
 
-The following repository contains a lot of useful wordlists for subdomain enumeration: https://github.com/rbsec/dnscan
+* https://github.com/rbsec/dnscan
+* https://github.com/danielmiessler/SecLists
