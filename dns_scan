@@ -14,12 +14,14 @@ parser.add_argument("domain", help="Domain To Scan")
 parser.add_argument("wordlist", help="Subdomain Wordlist")
 parser.add_argument("-t", dest="threads", default=1, help="Threads [1 - 222]")
 parser.add_argument("-r", dest="recursive", action="store_true", help="Recursive mode")
+parser.add_argument("-v", dest="verbose", action="store_true", help="Verbose mode")
 args = parser.parse_args()
 
 domain = args.domain
 wordlist = args.wordlist
 threadsNumber = int(args.threads)
 recursive = args.recursive
+verbose = args.verbose
 
 class ScanUtils:
     messages = queue.Queue()
@@ -63,7 +65,11 @@ def bruteforce(ini, end):
                         recursiveSubdomain = s + "." + subdomain
                         ScanUtils.recursiveWordlist.append(recursiveSubdomain)
 
-                ScanUtils.messages.put(out)
+                if verbose:
+                    ScanUtils.messages.put(out)
+                else:
+                    out = out.split(" ")[0]
+                    ScanUtils.messages.put(out.replace("\n", ""))
 
         except KeyboardInterrupt:
             ScanUtils.stopThreads = True
