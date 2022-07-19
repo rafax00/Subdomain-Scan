@@ -7,13 +7,13 @@ from threading import Lock
 parser = argparse.ArgumentParser()
 parser.add_argument("domain")
 parser.add_argument("wordlist")
-parser.add_argument("--threads", dest="threads", default=33)
+parser.add_argument("-t", dest="threads", default=33)
 
 args = parser.parse_args()
 
 target_domain = args.domain
 wordlist_file = args.wordlist
-threads = args.threads
+threads = int(args.threads)
 
 class EnumThreads():
     to_level_domains = queue.Queue()
